@@ -6,9 +6,10 @@ defmodule PescarteWeb.PageLive do
         |> assign(:count, 0)}
   end
 
-  def handle_event("inc", _params, socket) do
+  def handle_event("inc", params, socket) do
+    {int, _rest} = Integer.parse(params["amount"])
     {:noreply,
         socket
-        |> assign(:count, socket.assigns.count + 1)}
+        |> assign(:count, socket.assigns.count + int)}
   end
 end
